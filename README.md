@@ -1,3 +1,14 @@
+# Dataset Location
+
+```python
+import torch
+
+data_dir = os.path.expanduser("~/.dataset/hdfs")
+output_dir = "../output/hdfs/"
+```
+
+
+
 # LogBERT: Log Anomaly Detection via BERT
 ### [ARXIV](https://arxiv.org/abs/2103.04475) 
 
