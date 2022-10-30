@@ -11,8 +11,9 @@ output_dir = "../output/hdfs/"
 
 
 
-# LogBERT: Log Anomaly Detection via BERT
-### [ARXIV](https://arxiv.org/abs/2103.04475) 
+# LogBERT: Log Anomaly Detection via BERT   
+
+### [ARXIV](https://arxiv.org/abs/2103.04475)   
 
 This repository provides the implementation of Logbert for log anomaly detection. 
 The process includes downloading raw data online, parsing logs into structured data, 
