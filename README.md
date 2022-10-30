@@ -1,3 +1,7 @@
+# Upstream Source of `bert_pytorch` Folder
+
+`bert_pytorch` is directly verdoring from https://github.com/codertimo/BERT-pytorch, 
+probably with reduced layer number to minimize training cost.
 # Dataset Processing Code
 
 ## HDFS
