@@ -1,4 +1,6 @@
-# Dataset Location
+# Dataset Processing Code
+
+## HDFS
 
 ```python
 import torch
@@ -16,7 +18,7 @@ This repository provides the implementation of Logbert for log anomaly detection
 The process includes downloading raw data online, parsing logs into structured data, 
 creating log sequences and finally modeling. 
 
-![alt](img/log_preprocess.png)
+<!-- ![alt](img/log_preprocess.png) -->
 
 ## Configuration
 - Ubuntu 20.04
