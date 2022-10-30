@@ -1,7 +1,12 @@
+
+# Upstream of `Predictor` and Other Abstractions
+
+Major classes are modified based on https://github.com/donglee-afar/logdeep.
+
 # Upstream Source of `bert_pytorch` Folder
 
 `bert_pytorch` is directly vendoring from https://github.com/codertimo/BERT-pytorch, 
-probably with reduced layer number to minimize training cost.
+which is used for pretraining BERT, probably with reduced layer number to minimize training cost.
 
 # Dataset Processing Code
 
