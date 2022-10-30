@@ -2,13 +2,24 @@
 
 ## HDFS
 
+### Input Files and Directory
+
 ```python
 import torch
 
 data_dir = os.path.expanduser("~/.dataset/hdfs")
-output_dir = "../output/hdfs/"
 ```
 
+### Output Files and Directory
+
+
+```python
+log_file   = "HDFS.log"  # The input log file name
+
+log_structured_file = output_dir + log_file + "_structured.csv"
+log_templates_file = output_dir + log_file + "_templates.csv"
+log_sequence_file = output_dir + "hdfs_sequence.csv"
+```
 
 
 # LogBERT: Log Anomaly Detection via BERT   
