@@ -1,3 +1,15 @@
+# Implementation Details
+
+Implementation Details. We adopt Drain [3] to parse the log messages into
+log keys. Regarding baselines, we leverage the package Loglizer [4] to evaluate
+PCA, OCSVM, iForest as well as LogCluster for anomaly detection and adopt
+the open source deep learning-based log analysis toolkit to evaluate DeepLog
+and LogAnomaly 3
+. For LogBERT, we construct a Transformer encoder by using two Transformer layers. The dimensions for the input representation and
+hidden vectors are 50 and 256, respectively. The hyper-parameters, including α
+in Equation 7, m the ratio of masked log keys for the MKLP task, r the number of predicted anomalous log keys, and g the size of top-g candidate set for
+anomaly detection are tuned based on a small validation set. In our experiments,
+both training and detection phases have the same ratio of masked log keys m.
 
 # Upstream of `Predictor` and Other Abstractions
 
