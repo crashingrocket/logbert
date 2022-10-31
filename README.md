@@ -132,7 +132,7 @@ Reference: https://docs.conda.io/en/latest/miniconda.html
 
 Logbert and other baseline models are implemented on [HDFS](https://github.com/logpai/loghub/tree/master/HDFS), [BGL](https://github.com/logpai/loghub/tree/master/BGL), and [thunderbird]() datasets
 
-### HDFS example
+### HDFS Code
 
 ```shell
 cd HDFS
@@ -160,9 +160,71 @@ python loganomaly.py train
 python loganomaly.py predict
 
 #run baselines
-
-baselines.ipynb
+# baselines.ipynb
 ```
+
+### BGL Code
+
+```shell
+cd BGL
+
+sh init.sh
+
+# process data
+python data_process.py
+
+#run logbert
+python logbert.py vocab
+python logbert.py train
+python logbert.py predict
+
+#run deeplog
+python deeplog.py vocab
+# set options["vocab_size"] = <vocab output> above
+python deeplog.py train
+python deeplog.py predict 
+
+#run loganomaly
+python loganomaly.py vocab
+# set options["vocab_size"] = <vocab output> above
+python loganomaly.py train
+python loganomaly.py predict
+
+#run baselines
+# baselines.ipynb
+```
+
+### TBird Code
+
+```shell
+cd TBird
+
+sh init.sh
+
+# process data
+python data_process.py
+
+#run logbert
+python logbert.py vocab
+python logbert.py train
+python logbert.py predict
+
+#run deeplog
+python deeplog.py vocab
+# set options["vocab_size"] = <vocab output> above
+python deeplog.py train
+python deeplog.py predict 
+
+#run loganomaly
+python loganomaly.py vocab
+# set options["vocab_size"] = <vocab output> above
+python loganomaly.py train
+python loganomaly.py predict
+
+#run baselines
+# baselines.ipynb
+```
+
 
 ### Folders created during execution
 
