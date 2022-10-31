@@ -4,9 +4,9 @@ Implementation Details. We adopt Drain [3] to parse the log messages into
 log keys. Regarding baselines, we leverage the package Loglizer [4] to evaluate
 PCA, OCSVM, iForest as well as LogCluster for anomaly detection and adopt
 the open source deep learning-based log analysis toolkit to evaluate DeepLog
-and LogAnomaly 3. For LogBERT, we construct a Transformer encoder by using two Transformer layers. The dimensions for the input representation and hidden vectors are 50 and 256, respectively. The hyper-parameters, including α
-in Equation 7, m the ratio of masked log keys for the MKLP task, r the number of predicted anomalous log keys, and g the size of top-g candidate set for anomaly detection are tuned based on a small validation set. In our experiments,
-both training and detection phases have the same ratio of masked log keys m.
+and LogAnomaly. For LogBERT, we construct a Transformer encoder by using two Transformer layers. The dimensions for the input representation and hidden vectors are 50 and 256, respectively. The hyper-parameters, including α
+in Equation 7, $m$ the ratio of masked log keys for the MKLP task, $r$ the number of predicted anomalous log keys, and $g$ the size of top-$g$ candidate set for anomaly detection are tuned based on a small validation set. In our experiments,
+both training and detection phases have the same ratio of masked log keys $m$.
 
 # Upstream of `Predictor` and Other Abstractions
 
@@ -19,7 +19,7 @@ which is used for pretraining BERT, probably with reduced layer number to minimi
 
 # Dataset Processing Code
 
-## HDFS
+## Details on HDFS Dataset
 
 ### Input Files and Directory
 
@@ -57,6 +57,38 @@ def count_anomaly():
     print("total size {}, abnormal size {}".format(total_size, total_size - normal_size))
 ```
 
+## Details on TBird Dataset
+
+TBird dataset contains more than 30GB logs, which may require some skills to process.
+
+```python
+data_dir = os.path.expanduser("~/.dataset/tbird/")
+output_dir = "../output/tbird/"
+raw_log_file = "Thunderbird.log"
+sample_log_file = "Thunderbird_20M.log"
+sample_window_size = 2*10**7
+sample_step_size = 10**4
+window_name = ''
+log_file = sample_log_file
+
+parser_type = 'drain'
+#mins
+window_size = 1
+step_size = 0.5
+train_ratio = 6000
+
+########
+# count anomaly
+########
+# count_anomaly(data_dir + log_file)
+# sys.exit()
+
+#########
+# sample raw data
+#########
+sample_raw_data(data_dir+raw_log_file, data_dir+sample_log_file, sample_window_size, sample_step_size)
+```
+
 # LogBERT: Log Anomaly Detection via BERT   
 
 ### [ARXIV](https://arxiv.org/abs/2103.04475)   
@@ -68,6 +100,7 @@ creating log sequences and finally modeling.
 <!-- ![alt](img/log_preprocess.png) -->
 
 ## Configuration
+
 - Ubuntu 20.04
 - NVIDIA driver 460.73.01 
 - CUDA 11.2
@@ -96,11 +129,12 @@ An alternative is to create a conda environment:
 Reference: https://docs.conda.io/en/latest/miniconda.html
 
 ## Experiment
+
 Logbert and other baseline models are implemented on [HDFS](https://github.com/logpai/loghub/tree/master/HDFS), [BGL](https://github.com/logpai/loghub/tree/master/BGL), and [thunderbird]() datasets
 
 ### HDFS example
-```shell script
 
+```shell
 cd HDFS
 
 sh init.sh
@@ -131,7 +165,8 @@ baselines.ipynb
 ```
 
 ### Folders created during execution
-```shell script 
+
+```shell
 ~/.dataset //Stores original datasets after downloading
 project/output //Stores intermediate files and final results during execution
 ```
