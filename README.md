@@ -40,6 +40,22 @@ log_templates_file = output_dir + log_file + "_templates.csv"
 log_sequence_file = output_dir + "hdfs_sequence.csv"
 ```
 
+## Details on BGL Dataset
+
+Details on BGL Dataset
+
+```python
+# In the first column of the log, "-" indicates non-alert messages while others are alert messages.
+def count_anomaly():
+    total_size = 0
+    normal_size = 0
+    with open(data_dir + log_file, encoding="utf8") as f:
+        for line in f:
+            total_size += 1
+            if line.split(' ',1)[0] == '-':
+                normal_size += 1
+    print("total size {}, abnormal size {}".format(total_size, total_size - normal_size))
+```
 
 # LogBERT: Log Anomaly Detection via BERT   
 
