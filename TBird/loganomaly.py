@@ -63,7 +63,7 @@ options['lr_decay_ratio'] = 0.1
 
 options['resume_path'] = None
 options['model_name'] = "deeplog"
-options['save_dir'] = options["output_dir"] + "deeplog/"
+options['save_dir'] = options["output_dir"] + "loganomaly/"
 
 # Predict
 options['model_path'] = options["save_dir"] + "bestloss.pth"

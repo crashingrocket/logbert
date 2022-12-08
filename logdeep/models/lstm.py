@@ -31,6 +31,8 @@ class Deeplog(nn.Module):
 
         self.embedding_dim = embedding_dim
         self.vocab_size = vocab_size
+        #增加的
+        
         self.embedding = nn.Embedding(self.vocab_size, self.embedding_dim)
         torch.nn.init.uniform_(self.embedding.weight)
         self.embedding.weight.requires_grad = True
@@ -339,13 +341,21 @@ class loganomaly(nn.Module):
 
     def forward(self, features, device):
         input0, input1 = features[0], features[1]
+        #128,20 128,194 1
         embed0 = self.embedding(input0)
-
+        #128 20 50  dim 50,size177 input0,128,20
+        # h0_0 = torch.zeros(self.num_layers, embed0.size(0),
+        #                    self.hidden_size).to(device)
+        # c0_0 = torch.zeros(self.num_layers, embed0.size(0),
+        #                    self.hidden_size).to(device)
         h0_0 = torch.zeros(self.num_layers, embed0.size(0),
                            self.hidden_size).to(device)
         c0_0 = torch.zeros(self.num_layers, embed0.size(0),
-                           self.hidden_size).to(device)
-
+                           self.hidden_size).to(device)                   
+        #2 128 64
+        # print("1111111111111111111!!!!!\n"+self.embed0.num_embeddings)
+        # print(input_tensor.min())
+        #print(input_tensor.max())
         out0, _ = self.lstm0(embed0, (h0_0, c0_0))
 
         h0_1 = torch.zeros(self.num_layers, input1.size(0),

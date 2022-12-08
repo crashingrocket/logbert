@@ -221,15 +221,25 @@ class Trainer():
                 features.append(value.clone().detach().to(self.device))
 
             # output is log key and timestamp
+            torch.backends.cudnn.enabled = False
+            #修改位置
+            #print(self.embedding.num_embeddings)
+           # print(input_tensor.min())
+            #print(input_tensor.max())
+            #print(features)
             output = self.model(features=features, device=self.device)
+            # print(output,label)
             output = output.squeeze()
             label = label.view(-1).to(self.device)
+            # print(output,label)
+            if len(label)!=1:
+                # label_data=[label.item() for i in range(len(output))]
+                # label=torch.tensor(label_data,device=label.device,dtype=label.dtype)
+                loss = self.criterion(output, label)
 
-            loss = self.criterion(output, label)
-
-            total_losses += float(loss)
-            loss /= self.accumulation_step
-            loss.backward()
+                total_losses += float(loss)
+                loss /= self.accumulation_step
+                loss.backward()
 
             # Basically it involves making optimizer steps after several batches
             # thus increasing effective batch size.

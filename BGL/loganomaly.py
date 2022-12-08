@@ -1,8 +1,9 @@
 # -*- coding: utf-8 -*-
 import argparse
 import sys
+import os
 sys.path.append('../')
-
+print(os.getcwd())
 from logdeep.models.lstm import *
 from logdeep.tools.predict import Predicter
 from logdeep.tools.train import Trainer
@@ -48,7 +49,7 @@ options['hidden_size'] = 64
 options['num_layers'] = 2
 options['num_classes'] = 177
 options["embedding_dim"] = 50
-options["vocab_size"] = options['num_classes']
+options["vocab_size"] = 194
 # Train
 options['batch_size'] = 128
 options['accumulation_step'] = 1
@@ -62,7 +63,7 @@ options['lr_decay_ratio'] = 0.1
 
 options['resume_path'] = None
 options['model_name'] = "deeplog"
-options['save_dir'] = options["output_dir"] + "deeplog/"
+options['save_dir'] = options["output_dir"] + "loganomaly/"
 
 # Predict
 options['model_path'] = options["save_dir"] + "bestloss.pth"
